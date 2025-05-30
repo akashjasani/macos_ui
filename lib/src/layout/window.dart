@@ -353,10 +353,6 @@ class _MacosWindowState extends State<MacosWindow> {
                                   //   ),
                                   //   child: sidebar.top!,
                                   // ),
-                                Divider(
-                                    thickness: 1,
-                                    height: 1,
-                                    color: dividerColor),
                                 Expanded(
                                   child: MacosScrollbar(
                                     controller: _sidebarScrollController,
