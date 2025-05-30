@@ -321,7 +321,7 @@ class _MacosWindowState extends State<MacosWindow> {
                           child: DecoratedBox(
                             decoration: const BoxDecoration(
                               color: Color.fromRGBO(0, 0, 0, 1.0),
-                              backgroundBlendMode: BlendMode.clear,
+                              backgroundBlendMode: BlendMode.srcIn, // AKASH JASANI: made BlendMode.srcIn, it was BelndMode.clear. flicking issue resolution.
                             ),
                             child: Column(
                               children: [
@@ -336,20 +336,27 @@ class _MacosWindowState extends State<MacosWindow> {
                                   const SizedBox(height: 12),
                                 ] else
                                   const SizedBox.shrink(),
-                                if (_sidebarScrollController.hasClients &&
-                                    _sidebarScrollController.offset > 0.0)
+
+                                // if (_sidebarScrollController.hasClients &&
+                                //     _sidebarScrollController.offset > 0.0)
                                   Divider(
                                       thickness: 1,
                                       height: 1,
                                       color: dividerColor),
                                 if (sidebar.top != null &&
                                     constraints.maxHeight > 81)
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8.0,
-                                    ),
-                                    child: sidebar.top!,
-                                  ),
+                                    sidebar.top!,
+                                  ///AKASH JASANI: Remove padding.
+                                  // Padding(
+                                  //   padding: const EdgeInsets.symmetric(
+                                  //     horizontal: 0,
+                                  //   ),
+                                  //   child: sidebar.top!,
+                                  // ),
+                                Divider(
+                                    thickness: 1,
+                                    height: 1,
+                                    color: dividerColor),
                                 Expanded(
                                   child: MacosScrollbar(
                                     controller: _sidebarScrollController,
